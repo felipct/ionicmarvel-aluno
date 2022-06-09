@@ -12,8 +12,6 @@ import { PaginationComponent } from '../util/pagination/pagination.component';
 export class HomePage {
   
   public characters : any=[];
-  
-  /* objeto utilizado para controlar o filtro */
   public filtro   = { 
       descricao   : '',
       bkp         : ''
@@ -28,11 +26,9 @@ export class HomePage {
 
   }
 
-  /* recupera personagens de acordo com a paginação */
   public getAllCharacters(){
       this.checking = true;
-      
-      /* verifica filtro e reseta paginação */
+
       if(this.filtro.descricao != this.filtro.bkp){
           this.pagination.reset();
       }
@@ -45,7 +41,6 @@ export class HomePage {
       });
   }
 
-  /* métodos relacionados à paginação */
   public goFirstPage(){
       this.pagination.setCurrentPage(1);
       this.getAllCharacters();
@@ -70,9 +65,6 @@ export class HomePage {
       this.pagination.setCurrentPage(page);
       this.getAllCharacters();
   }
-  /* --- */
-
-  /* vai para os detalhes do personagem */
   public goDetails(character: any){
     this.navCtrl.navigateForward('character', {
         queryParams: { id: character.id }
